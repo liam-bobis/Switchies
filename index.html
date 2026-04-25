@@ -3,187 +3,119 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Switchies – Mechanical Keyboard Finds</title>
-  <meta name="description" content="Find keycaps, switches, lube, stabilizers, cleaners, and keyboard accessories from curated listings." />
+
+  <title>Set U Upp | Desk Setup & Keyboard Essentials</title>
+  <meta name="description" content="Set U Upp helps you find keyboards, monitors, mice, desk setup gear, accessories, and workspace essentials in one clean catalog." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <header class="topbar">
-    <div class="container nav">
-      <a class="brand" href="#top">
-        <div class="logo">KM</div>
-        <span> Switchies <span class="brand-accent">PH</span></span>
+  <header class="site-header">
+    <div class="nav">
+      <a href="#" class="brand">
+        <div class="logo">SU</div>
+        <div>
+          <strong>Set U Upp</strong>
+          <span>Desk setup essentials</span>
+        </div>
       </a>
 
+      <div class="top-search">
+        <input id="topSearchInput" type="text" placeholder="Search keyboards, monitors, mice, and more..." />
+        <span>⌕</span>
+      </div>
+
       <nav class="nav-links">
-        <a href="#how-it-works">How It Works</a>
         <a href="#products">Products</a>
-        <a class="cta" href="#products">Shop Keyboard Finds</a>
+        <a href="#about-contact">About / Contact</a>
       </nav>
     </div>
   </header>
 
-  <main id="top">
-    <section class="hero">
-      <div class="container hero-wrap">
-        <div class="hero-card">
-          <div class="hero-badge">Curated keyboard gear • Filterable catalog • Community style</div>
-          <h1>Find your next <span class="accent">keyboard upgrade</span> without digging through messy listings.</h1>
-          <p>
-            Browse keycaps, switches, lube, stabilizers, desk mats, cleaning tools, and mods in one clean catalog.
-            Quickly filter products by category, marketplace, and availability to find what fits your setup.
-          </p>
-
-          <div class="hero-actions">
-            <a class="cta" href="#products">Browse Products</a>
-            <a class="ghost-btn" href="#how-it-works">See How It Works</a>
-          </div>
-
-          <div class="hero-stats">
-            <div class="stat">
-              <strong id="statCount">0</strong>
-              <span>Listings loaded</span>
-            </div>
-            <div class="stat">
-              <strong>5+</strong>
-              <span>Product categories</span>
-            </div>
-            <div class="stat">
-              <strong>Fast</strong>
-              <span>Easy browsing</span>
-            </div>
-          </div>
+  <main>
+    <section class="catalog-section" id="products">
+      <div class="filters-panel">
+        <div class="search-box">
+          <input id="searchInput" type="text" placeholder="Search products..." />
+          <span>⌕</span>
         </div>
 
-        <aside class="ad-card">
-          <div class="sponsor-label">Featured aesthetic</div>
+        <select id="categoryFilter">
+          <option value="all">All Categories</option>
+        </select>
 
-          <div class="keyboard-visual" aria-hidden="true">
-            <div class="kb-row">
-              <div class="key accent-key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key alt-key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div>
-            </div>
-            <div class="kb-row">
-              <div class="key long"></div><div class="key"></div><div class="key"></div><div class="key accent-key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key alt-key"></div><div class="key"></div><div class="key"></div><div class="key"></div>
-            </div>
-            <div class="kb-row">
-              <div class="key long"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key accent-key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key long"></div>
-            </div>
-            <div class="kb-row">
-              <div class="key long"></div><div class="key"></div><div class="key"></div><div class="key space"></div><div class="key"></div><div class="key alt-key"></div><div class="key"></div><div class="key"></div>
-            </div>
-          </div>
+        <select id="subcategoryFilter">
+          <option value="all">All Subcategories</option>
+        </select>
 
-          <div class="ad-box">
-            Featured recommendations and curated placements can appear here.
-          </div>
-        </aside>
+        <select id="shopFilter">
+          <option value="all">All Shops</option>
+        </select>
+
+        <select id="sortFilter">
+          <option value="featured">Sort: Featured</option>
+          <option value="low-high">Price: Low to High</option>
+          <option value="high-low">Price: High to Low</option>
+          <option value="name">Name: A to Z</option>
+        </select>
+
+        <button id="searchButton" class="search-btn">Search</button>
+        <button id="clearFilters" class="clear-btn">Clear</button>
+      </div>
+
+      <div class="catalog-toolbar">
+        <p id="resultsText">Loading products...</p>
+
+        <div class="view-options">
+          <button id="gridViewBtn" class="view-btn active">▦ Grid</button>
+          <button id="listViewBtn" class="view-btn">☷ List</button>
+        </div>
+      </div>
+
+      <div id="productGrid" class="product-grid"></div>
+
+      <div class="load-more-wrap">
+        <button id="loadMoreBtn" class="load-more-btn">Load More Products⌄</button>
       </div>
     </section>
 
-    <section class="section" id="products">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Keyboard essentials</h2>
-            <p>Filter by category, shop, availability, and price range to quickly find products for your build.</p>
-          </div>
-        </div>
-
-        <div class="filter-card">
-          <div class="filters">
-            <div class="field">
-              <label for="searchInput">Search</label>
-              <input id="searchInput" class="control" type="text" placeholder="Search keycaps, switches, lube, cleaner..." />
-            </div>
-
-            <div class="field">
-              <label for="categoryFilter">Category</label>
-              <select id="categoryFilter" class="control">
-                <option value="all">All categories</option>
-              </select>
-            </div>
-
-            <div class="field">
-              <label for="shopFilter">Marketplace</label>
-              <select id="shopFilter" class="control">
-                <option value="all">All shops</option>
-              </select>
-            </div>
-
-            <div class="field">
-              <label for="stockFilter">Availability</label>
-              <select id="stockFilter" class="control">
-                <option value="all">All</option>
-                <option value="in stock">In Stock</option>
-                <option value="limited">Limited</option>
-                <option value="out of stock">Out of Stock</option>
-              </select>
-            </div>
-
-            <div class="field">
-              <label for="sortFilter">Sort by</label>
-              <select id="sortFilter" class="control">
-                <option value="featured">Featured</option>
-                <option value="low-high">Price: Low to High</option>
-                <option value="high-low">Price: High to Low</option>
-                <option value="name">Name: A to Z</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        <div class="results-bar">
-          <div id="resultsText">Loading listings...</div>
-          <div class="chip-row">
-            <div class="chip">Keycaps</div>
-            <div class="chip">Switches</div>
-            <div class="chip">Lubricants</div>
-            <div class="chip">Cleaning tools</div>
-            <div class="chip">Mods & accessories</div>
-          </div>
-        </div>
-
-        <div id="productGrid" class="product-grid"></div>
-
-        <div class="mid-ad">
-          Featured products and partner placements can appear here.
-        </div>
+    <section class="about-section" id="about-contact">
+      <div class="about-card">
+        <h2>About Set U Upp</h2>
+        <p>
+          Set U Upp is a clean catalog for desk setup essentials, keyboards, monitors,
+          mice, audio gear, cable management, hubs, chairs, and accessories.
+        </p>
+        <p>
+          The goal is simple: help visitors find useful setup products faster without
+          digging through messy listings.
+        </p>
       </div>
-    </section>
 
-    <section class="section" id="how-it-works">
-      <div class="container about-wrap single-about">
-        <div class="about">
-          <h3>How the catalog works</h3>
-          <p>
-            Browse curated mechanical keyboard products in one place, including keycaps, switches, lube, cleaning tools, and accessories.
-            Use the filters to quickly find what fits your setup and preferences.
-          </p>
-          <ul>
-            <li>Updated product listings</li>
-            <li>Easy category and shop filtering</li>
-            <li>Clean browsing experience</li>
-            <li>Built for keyboard enthusiasts</li>
-          </ul>
-        </div>
+      <div class="contact-card">
+        <h2>Contact</h2>
+        <p><strong>Email:</strong> setupupp@gmail.com</p>
+        <p><strong>Facebook:</strong> facebook.com/setupupp</p>
+        <p><strong>Instagram:</strong> @setupupp</p>
+        <p><strong>Location:</strong> Philippines</p>
+        <small>Replace these details with your real contact information.</small>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="container footer-panel">
-      <div>
-        <strong>KeyMarket PH</strong><br>
-        Curated mechanical keyboard finds for enthusiasts, modders, and first-time builders.
-      </div>
-      <div>
-        Built for the mechanical keyboard community.
-      </div>
+    <div>
+      <strong>Set U Upp</strong>
+      <p>Curated desk setup and keyboard essentials.</p>
+    </div>
+
+    <div>
+      <p>Contact: setupupp@gmail.com</p>
     </div>
   </footer>
 
